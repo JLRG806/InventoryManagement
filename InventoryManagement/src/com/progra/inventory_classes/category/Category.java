@@ -1,9 +1,14 @@
 package com.progra.inventory_classes.category;
 
+import java.util.ArrayList;
+
+import com.progra.inventory_classes.product.Product;
+
 public class Category {
 
 	private Integer id_category;
 	private String category_name;
+	private ArrayList<Product> products;
 	private Integer counter = 0;
 
 	/**

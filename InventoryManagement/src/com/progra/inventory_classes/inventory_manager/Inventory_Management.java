@@ -1,14 +1,24 @@
 package com.progra.inventory_classes.inventory_manager;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
-public class Inventory_Management {
-	public Scanner userInput; 
-	private int input;
-	public Inventory_Management() {
-		userInput = new Scanner (System.in);
-	}
+import com.progra.inventory_classes.category.Category;
+import com.progra.inventory_classes.user.User;
 
+public class Inventory_Management {
+	
+	private static ArrayList<User> users = new ArrayList<User>();
+	private static ArrayList<Category> categories = new ArrayList<Category>();	
+	
+	public Scanner userInput;
+	private int input;
+
+	public Inventory_Management(ArrayList<User> users, ArrayList<Category> categories) {
+		this.users = users;
+		this.categories = categories;
+		userInput = new Scanner(System.in);
+	}
 
 	public void menuClient() {
 		try {
@@ -20,7 +30,7 @@ public class Inventory_Management {
 			System.out.println("║  1) Comprar productos               ║");
 			System.out.println("║  2) Ver productos comprados         ║");
 			System.out.println("║  3) Devolver produto                ║");
-			System.out.println("║  4) Cerrar sesión                   ║");	
+			System.out.println("║  4) Cerrar sesión                   ║");
 			System.out.println("╠═════════════════════════════════════╣");
 			System.out.println("║ Escriba el número de la opción a    ║");
 			System.out.println("║ continuación:                       ║");
@@ -52,7 +62,7 @@ public class Inventory_Management {
 			System.out.print("║ Escriba su respuesta:  ");
 			this.input = this.userInput.nextInt();
 			System.out.println("╚═════════════════════════════════════╝");
-		} catch (Exception e) {                                            
+		} catch (Exception e) {
 			System.out.println("╔═════════════════════════════════════╗");
 			System.out.println("║    Parece que ha habido un error,   ║");
 			System.out.println("║          Intentelo nuevamente       ║");
@@ -60,15 +70,17 @@ public class Inventory_Management {
 			menuAdmin();
 		}
 		switch (this.input) {
-		case 1 :
+		case 1:
 			menuProducts();
 			break;
-		case 2 :
+		case 2:
 			menuCategory();
 			break;
-		case 3 :
+		case 3:
 			menuUser();
 			break;
+		case 4:
+			logOut();
 		default:
 			System.out.println("╔═════════════════════════════════════╗");
 			System.out.println("║    Parece que ha habido un error,   ║");
@@ -78,7 +90,8 @@ public class Inventory_Management {
 			break;
 		}
 	}
-	public void menuProducts () {
+
+	public void menuProducts() {
 		try {
 			System.out.println("╔═════════════════════════════════════╗");
 			System.out.println("║           Menú de Productos         ║");
@@ -98,7 +111,7 @@ public class Inventory_Management {
 			System.out.print("║ Escriba su respuesta:  ");
 			this.input = this.userInput.nextInt();
 			System.out.println("╚═════════════════════════════════════╝");
-		} catch (Exception e) {                                            
+		} catch (Exception e) {
 			System.out.println("╔═════════════════════════════════════╗");
 			System.out.println("║    Parece que ha habido un error,   ║");
 			System.out.println("║          Intentelo nuevamente       ║");
@@ -106,23 +119,23 @@ public class Inventory_Management {
 			menuProducts();
 		}
 		switch (this.input) {
-		case 1 :
-			//Poner metodos aqui
+		case 1:
+			// Poner metodos aqui
 			break;
-		case 2 :
-			//Poner metodos aqui
+		case 2:
+			// Poner metodos aqui
 			break;
-		case 3 :
-			//Poner metodos aqui
+		case 3:
+			// Poner metodos aqui
 			break;
-		case 4 :
-			//Poner metodos aqui
+		case 4:
+			// Poner metodos aqui
 			break;
-		case 5 :
-			//Poner metodos aqui
+		case 5:
+			// Poner metodos aqui
 			break;
-		case 6 :
-			//Poner metodos aqui
+		case 6:
+			// Poner metodos aqui
 			break;
 		default:
 			System.out.println("╔═════════════════════════════════════╗");
@@ -133,7 +146,8 @@ public class Inventory_Management {
 			break;
 		}
 	}
-	public void menuCategory () {
+
+	public void menuCategory() {
 		try {
 			System.out.println("╔═════════════════════════════════════╗");
 			System.out.println("║          Menú de Category           ║");
@@ -150,7 +164,7 @@ public class Inventory_Management {
 			System.out.print("║ Escriba su respuesta:  ");
 			this.input = this.userInput.nextInt();
 			System.out.println("╚═════════════════════════════════════╝");
-		} catch (Exception e) {                                            
+		} catch (Exception e) {
 			System.out.println("╔═════════════════════════════════════╗");
 			System.out.println("║    Parece que ha habido un error,   ║");
 			System.out.println("║          Intentelo nuevamente       ║");
@@ -158,14 +172,14 @@ public class Inventory_Management {
 			menuCategory();
 		}
 		switch (this.input) {
-		case 1 :
-			//Poner metodos aqui
+		case 1:
+			// Poner metodos aqui
 			break;
-		case 2 :
-			//Poner metodos aqui
+		case 2:
+			// Poner metodos aqui
 			break;
-		case 3 :
-			//poner metodos aqui
+		case 3:
+			// poner metodos aqui
 			break;
 		default:
 			System.out.println("╔═════════════════════════════════════╗");
@@ -176,7 +190,8 @@ public class Inventory_Management {
 			break;
 		}
 	}
-	public void menuUser () {
+
+	public void menuUser() {
 		try {
 			System.out.println("╔═════════════════════════════════════╗");
 			System.out.println("║            Menú de Usuario          ║");
@@ -192,7 +207,7 @@ public class Inventory_Management {
 			System.out.print("║ Escriba su respuesta:  ");
 			this.input = this.userInput.nextInt();
 			System.out.println("╚═════════════════════════════════════╝");
-		} catch (Exception e) {                                            
+		} catch (Exception e) {
 			System.out.println("╔═════════════════════════════════════╗");
 			System.out.println("║    Parece que ha habido un error,   ║");
 			System.out.println("║          Intentelo nuevamente       ║");
@@ -200,11 +215,11 @@ public class Inventory_Management {
 			menuUser();
 		}
 		switch (this.input) {
-		case 1 :
-			//Poner metodos aqui
+		case 1:
+			// Poner metodos aqui
 			break;
-		case 2 :
-			//Poner metodos aqui
+		case 2:
+			// Poner metodos aqui
 			break;
 		default:
 			System.out.println("╔═════════════════════════════════════╗");
@@ -214,5 +229,9 @@ public class Inventory_Management {
 			menuUser();
 			break;
 		}
+	}
+	
+	public void logOut() {
+		
 	}
 }

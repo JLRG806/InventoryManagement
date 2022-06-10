@@ -27,6 +27,7 @@ public class User {
 		this.username = username;
 		this.user_type = user_type;
 		this.password = password;
+		this.counter++;
 	}
 
 	/**
