@@ -21,6 +21,12 @@ public class Category {
 		this.counter++;
 	}
 
+	public Category(String category_name, ArrayList<Product> products) {
+		this.id_category = counter;
+		this.category_name = category_name;
+		this.products = products;
+		this.counter++;
+	}
 	/**
 	 * @return the id_category
 	 */

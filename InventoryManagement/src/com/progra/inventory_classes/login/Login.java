@@ -10,7 +10,7 @@ import com.progra.inventory_classes.user.User;
 public class Login {
 
 	private ArrayList<User> users = new ArrayList<User>();
-	private ArrayList<Category> categories = new ArrayList<Category>();	
+	private ArrayList<Category> categories = new ArrayList<Category>();
 	public Scanner input = new Scanner(System.in);
 
 	public Login(ArrayList<User> users, ArrayList<Category> categories) {
@@ -19,7 +19,7 @@ public class Login {
 		if (newUser()) {
 			createFirstUser();
 		} else {
-			loginMenu(this.users,this.categories);
+			loginMenu(this.users, this.categories);
 		}
 	}
 
@@ -41,6 +41,7 @@ public class Login {
 		User user;
 		System.out.println("╔═══════════════════════════════════╗");
 		System.out.println("║  No hay usuarios registrados...   ║");
+		System.out.println("║  Se creara un usuario Admin ...   ║");
 		System.out.println("╠═══════════════════════════════════╣");
 		System.out.print("║  Usuario: ");
 		String name = input.nextLine();
@@ -53,7 +54,7 @@ public class Login {
 			users.add(user = new User(name, 0, password));
 			System.out.println("Se registro el usuario Administrado...");
 			input.nextLine();
-			loginMenu(this.users,this.categories);
+			loginMenu(this.users, this.categories);
 
 		} catch (Exception e) {
 			System.out.println("Error al registrar usuario...");
@@ -74,19 +75,17 @@ public class Login {
 			String password = input.nextLine();
 			System.out.println("╚═══════════════════════════════════╝");
 			for (User user : this.users) {
-				
+
 				if (user.getUsername().compareTo(username) == 0 && user.getPassword().compareTo(password) == 0) {
-					Inventory_Management im = new Inventory_Management(this.users,this.categories, user.getUser_type());
+					Inventory_Management im = new Inventory_Management(this.users, this.categories,
+							user.getUser_type());
 					im.menuType();
-					
-				}else {
+
+				} else {
 					System.out.println("Login Fallido - Intentelo de nuevo");
 					successLogin = true;
 				}
-
 			}
-			
-
 
 		} while (successLogin);
 
