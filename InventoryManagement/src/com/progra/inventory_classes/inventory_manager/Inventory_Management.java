@@ -4,20 +4,38 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 import com.progra.inventory_classes.category.Category;
+import com.progra.inventory_classes.login.Login;
 import com.progra.inventory_classes.user.User;
 
 public class Inventory_Management {
-	
-	private static ArrayList<User> users = new ArrayList<User>();
-	private static ArrayList<Category> categories = new ArrayList<Category>();	
-	
-	public Scanner userInput;
-	private int input;
 
-	public Inventory_Management(ArrayList<User> users, ArrayList<Category> categories) {
+	private static ArrayList<User> users = new ArrayList<User>();
+	private static ArrayList<Category> categories = new ArrayList<Category>();
+
+	public Scanner userInput;
+	private Integer input;
+	private Integer displayMenu;
+
+	public Inventory_Management(ArrayList<User> users, ArrayList<Category> categories, Integer displayMenu) {
 		this.users = users;
 		this.categories = categories;
+		this.displayMenu = displayMenu;
 		userInput = new Scanner(System.in);
+	}
+
+	public void menuType() {
+		switch (this.displayMenu) {
+		case 0:
+			menuAdmin();
+			break;
+		case 1:
+			menuClient();
+			break;
+		default:
+			System.out.println("Error del sistema, por favor inicie de nuevo...");
+			System.exit(0);
+			break;
+		}
 	}
 
 	public void menuClient() {
@@ -230,8 +248,8 @@ public class Inventory_Management {
 			break;
 		}
 	}
-	
+
 	public void logOut() {
-		
+		Login l = new Login(this.users, this.categories);
 	}
 }

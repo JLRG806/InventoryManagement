@@ -73,14 +73,19 @@ public class Login {
 			System.out.print("║  Contraseña: ");
 			String password = input.nextLine();
 			System.out.println("╚═══════════════════════════════════╝");
-			for (User user : users) {
-				if (user.getUsername() == username && user.getPassword() == password) {
-					Inventory_Management im = new Inventory_Management();
+			for (User user : this.users) {
+				
+				if (user.getUsername().compareTo(username) == 0 && user.getPassword().compareTo(password) == 0) {
+					Inventory_Management im = new Inventory_Management(this.users,this.categories, user.getUser_type());
+					im.menuType();
 					
+				}else {
+					System.out.println("Login Fallido - Intentelo de nuevo");
+					successLogin = true;
 				}
 
 			}
-			System.out.println("Login Fallido - Intentelo de nuevo");
+			
 
 
 		} while (successLogin);
