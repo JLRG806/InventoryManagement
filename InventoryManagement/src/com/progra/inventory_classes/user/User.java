@@ -7,7 +7,7 @@ package com.progra.inventory_classes.user;
  * @author angel
  *
  */
-public class User {
+public class User extends People {
 
 	private Integer id_user;
 	private String username;
@@ -33,6 +33,7 @@ public class User {
 	/**
 	 * @return the id_user
 	 */
+	@Override
 	public Integer getId_user() {
 		return id_user;
 	}
@@ -40,6 +41,7 @@ public class User {
 	/**
 	 * @param id_user the id_user to set
 	 */
+	@Override
 	public void setId_user(Integer id_user) {
 		this.id_user = id_user;
 	}
@@ -47,6 +49,7 @@ public class User {
 	/**
 	 * @return the username
 	 */
+	@Override
 	public String getUsername() {
 		return username;
 	}
@@ -54,6 +57,7 @@ public class User {
 	/**
 	 * @param username the username to set
 	 */
+	@Override
 	public void setUsername(String username) {
 		this.username = username;
 	}
@@ -61,6 +65,7 @@ public class User {
 	/**
 	 * @return the user_type
 	 */
+	@Override
 	public int getUser_type() {
 		return user_type;
 	}
@@ -68,6 +73,7 @@ public class User {
 	/**
 	 * @param user_type the user_type to set
 	 */
+	@Override
 	public void setUser_type(int user_type) {  
 		this.user_type = user_type;
 	}
@@ -75,6 +81,7 @@ public class User {
 	/**
 	 * @return the password
 	 */
+	@Override
 	public String getPassword() {
 		return password;
 	}
@@ -82,6 +89,7 @@ public class User {
 	/**
 	 * @param password the password to set
 	 */
+	@Override
 	public void setPassword(String password) {
 		this.password = password;
 	}

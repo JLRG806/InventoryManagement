@@ -7,7 +7,7 @@ package com.progra.inventory_classes.product;
  * @author angel
  *
  */
-public class Product {
+public class Product extends Assets {
 
 	private Integer id_product;
 	private String product_name;
@@ -31,6 +31,7 @@ public class Product {
 	/**
 	 * @return the id_product
 	 */
+	@Override
 	public Integer getId_product() {
 		return id_product;
 	}
@@ -38,6 +39,7 @@ public class Product {
 	/**
 	 * @param id_product the id_product to set
 	 */
+	@Override
 	public void setId_product(Integer id_product) {
 		this.id_product = id_product;
 	}
@@ -45,6 +47,7 @@ public class Product {
 	/**
 	 * @return the product_name
 	 */
+	@Override
 	public String getProduct_name() {
 		return product_name;
 	}
@@ -52,6 +55,7 @@ public class Product {
 	/**
 	 * @param product_name the product_name to set
 	 */
+	@Override
 	public void setProduct_name(String product_name) {
 		this.product_name = product_name;
 	}
@@ -59,6 +63,7 @@ public class Product {
 	/**
 	 * @return the price
 	 */
+	@Override
 	public double getPrice() {
 		return price;
 	}
@@ -66,6 +71,7 @@ public class Product {
 	/**
 	 * @param price the price to set
 	 */
+	@Override
 	public void setPrice(double price) {
 		this.price = price;
 	}
@@ -73,6 +79,7 @@ public class Product {
 	/**
 	 * @return the stock_quantity
 	 */
+	@Override
 	public int getStock_quantity() {
 		return stock_quantity;
 	}
@@ -80,6 +87,7 @@ public class Product {
 	/**
 	 * @param stock_quantity the stock_quantity to set
 	 */
+	@Override
 	public void setStock_quantity(int stock_quantity) {
 		this.stock_quantity = stock_quantity;
 	}
