@@ -8,7 +8,7 @@ public class Category {
 
 	private Integer id_category;
 	private String category_name;
-	private ArrayList<Product> products;
+	private ArrayList<Integer> id_products;
 	private Integer counter = 0;
 
 	/**
@@ -18,15 +18,13 @@ public class Category {
 	 */
 	public Category(Integer id_category, String category_name) {
 		this.id_category = id_category;
-		this.category_name = category_name;
-		this.counter++;
+		this.category_name = category_name;		
 	}
 
-	public Category(Integer id_category, String category_name, ArrayList<Product> products) {
+	public Category(Integer id_category, String category_name, ArrayList<Integer> products) {
 		this.id_category = id_category;
 		this.category_name = category_name;
-		this.products = products;
-		this.counter++;
+		this.id_products = products;		
 	}
 
 	/**
