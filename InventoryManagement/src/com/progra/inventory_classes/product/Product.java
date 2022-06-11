@@ -13,7 +13,6 @@ public class Product {
 	private String product_name;
 	private double price;
 	private int stock_quantity;
-	private Integer counter = 0;
 
 	/**
 	 * Constructor
@@ -22,12 +21,11 @@ public class Product {
 	 * @param price
 	 * @param stock_quantity
 	 */
-	public Product(String product_name, double price, int stock_quantity) {
-		this.id_product = this.counter;
+	public Product(Integer id_product, String product_name, double price, int stock_quantity) {
+		this.id_product = id_product;
 		this.product_name = product_name;
 		this.price = price;
 		this.stock_quantity = stock_quantity;
-		this.counter++;
 	}
 
 	/**

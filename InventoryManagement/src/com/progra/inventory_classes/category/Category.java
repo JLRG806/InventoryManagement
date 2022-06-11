@@ -13,20 +13,22 @@ public class Category {
 
 	/**
 	 * Constructor
+	 * 
 	 * @param category_name
 	 */
-	public Category(String category_name) {
-		this.id_category = counter;
+	public Category(Integer id_category, String category_name) {
+		this.id_category = id_category;
 		this.category_name = category_name;
 		this.counter++;
 	}
 
-	public Category(String category_name, ArrayList<Product> products) {
-		this.id_category = counter;
+	public Category(Integer id_category, String category_name, ArrayList<Product> products) {
+		this.id_category = id_category;
 		this.category_name = category_name;
 		this.products = products;
 		this.counter++;
 	}
+
 	/**
 	 * @return the id_category
 	 */

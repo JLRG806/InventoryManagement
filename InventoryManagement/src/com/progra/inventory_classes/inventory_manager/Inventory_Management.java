@@ -13,7 +13,9 @@ public class Inventory_Management {
 
 	private static ArrayList<User> users = new ArrayList<User>();
 	private static ArrayList<Category> categories = new ArrayList<Category>();
-	private static ArrayList<Product> products = new ArrayList<Product>();
+	private ArrayList<Product> products = new ArrayList<Product>();
+	private Integer categoryCounter = 1;
+	private Integer productCounter = 1;
 
 	public Scanner userInput;
 	private Integer input;
@@ -81,7 +83,7 @@ public class Inventory_Management {
 			System.out.println("║ continuación:                       ║");
 			System.out.println("╠═════════════════════════════════════╣");
 			System.out.print("║ Escriba su respuesta:  ");
-			this.input = this.userInput.nextInt();
+			this.input = Integer.parseInt(userInput.nextLine());
 			System.out.println("╚═════════════════════════════════════╝");
 		} catch (Exception e) {
 			System.out.println("╔═════════════════════════════════════╗");
@@ -118,6 +120,7 @@ public class Inventory_Management {
 	}
 
 	public void menuProducts() {
+		clearConsole();
 		try {
 			System.out.println("╔═════════════════════════════════════╗");
 			System.out.println("║           Menú de Productos         ║");
@@ -135,7 +138,7 @@ public class Inventory_Management {
 			System.out.println("║ continuación:                       ║");
 			System.out.println("╠═════════════════════════════════════╣");
 			System.out.print("║ Escriba su respuesta:  ");
-			this.input = this.userInput.nextInt();
+			this.input = Integer.parseInt(userInput.nextLine());
 			System.out.println("╚═════════════════════════════════════╝");
 		} catch (Exception e) {
 			System.out.println("╔═════════════════════════════════════╗");
@@ -194,6 +197,7 @@ public class Inventory_Management {
 	}
 
 	public void menuCategory() {
+		clearConsole();
 		try {
 			System.out.println("╔═════════════════════════════════════╗");
 			System.out.println("║          Menú de Category           ║");
@@ -209,7 +213,7 @@ public class Inventory_Management {
 			System.out.println("║ continuación:                       ║");
 			System.out.println("╠═════════════════════════════════════╣");
 			System.out.print("║ Escriba su respuesta:  ");
-			this.input = this.userInput.nextInt();
+			this.input = Integer.parseInt(userInput.nextLine());
 			System.out.println("╚═════════════════════════════════════╝");
 		} catch (Exception e) {
 			System.out.println("╔═════════════════════════════════════╗");
@@ -223,7 +227,7 @@ public class Inventory_Management {
 			createCategory();
 			break;
 		case 2:
-			deleteCategory();
+			updateCategory();
 			break;
 		case 3:
 			deleteCategory();
@@ -248,9 +252,9 @@ public class Inventory_Management {
 				System.out.println("║    Lista de categorias existentes   ║");
 				System.out.println("╠═════════════════════════════════════╣");
 				for (Category category : this.categories) {
-					
-					System.out.println("║    " + category.getId_category() + ") Nombre: " + category.getCategory_name() + ".");
-					
+
+					System.out.println("║    " + category.getId_category() + ")Nombre: " + category.getCategory_name());
+
 				}
 				System.out.println("╚═════════════════════════════════════╝");
 			} else {
@@ -260,11 +264,16 @@ public class Inventory_Management {
 			}
 			Category c;
 			Product p;
-			String category_name = userInput.nextLine();
-			categories.add(c = new Category(category_name, this.products));
-			
-			
 
+			System.out.println("╔═════════════════════════════════════╗");
+			System.out.print("║    Nombre de la categoria: ");
+			String category_name = userInput.nextLine();
+			System.out.println("╚═════════════════════════════════════╝");
+
+			this.categories.add(c = new Category(this.categoryCounter, category_name));
+			this.categoryCounter++;
+
+			menuCategory();
 		} catch (Exception e) {
 			System.out.println("╔═════════════════════════════════════╗");
 			System.out.println("║    Parece que ha habido un error,   ║");
@@ -276,11 +285,94 @@ public class Inventory_Management {
 	}
 
 	public void updateCategory() {
+		try {
+			if (this.categories.size() != 0) {
+				System.out.println("╔═════════════════════════════════════╗");
+				System.out.println("║    Lista de categorias existentes   ║");
+				System.out.println("╠═════════════════════════════════════╣");
+				for (Category category : this.categories) {
+
+					System.out.println("║    " + category.getId_category() + ")Nombre: " + category.getCategory_name());
+
+				}
+				System.out.println("╠═════════════════════════════════════╣");
+				System.out.print("║    Actualizar categoria N°: ");
+				Integer category_id = Integer.parseInt(userInput.nextLine());
+				System.out.println("╚═════════════════════════════════════╝");
+				for (Category category : this.categories) {
+					if (category.getId_category() == category_id) {
+						Category c;
+						Product p;
+
+						System.out.println("╠═════════════════════════════════════╣");
+						System.out.print("║    Nombre de la categoria: ");
+						String category_name = userInput.nextLine();
+						System.out.println("╚═════════════════════════════════════╝");
+						category.setCategory_name(category_name);
+					} else {
+						System.out.println("╔═════════════════════════════════════╗");
+						System.out.println("║  Seleccione una categoria existente ║");
+						System.out.println("╚═════════════════════════════════════╝");
+					}
+
+				}
+
+			} else {
+				System.out.println("╔═════════════════════════════════════╗");
+				System.out.println("║    Sin categorias por mostrar...    ║");
+				System.out.println("╚═════════════════════════════════════╝");
+				menuCategory();
+			}
+			menuCategory();
+		} catch (Exception e) {
+			System.out.println("╔═════════════════════════════════════╗");
+			System.out.println("║    Parece que ha habido un error,   ║");
+			System.out.println("║          Intentelo nuevamente       ║");
+			System.out.println("╚═════════════════════════════════════╝");
+			menuCategory();
+		}
 
 	}
 
 	public void deleteCategory() {
+		try {
+			if (this.categories.size() != 0) {
+				System.out.println("╔═════════════════════════════════════╗");
+				System.out.println("║    Lista de categorias existentes   ║");
+				System.out.println("╠═════════════════════════════════════╣");
+				for (Category category : this.categories) {
 
+					System.out.println("║    " + category.getId_category() + ")Nombre: " + category.getCategory_name());
+
+				}
+				System.out.println("╠═════════════════════════════════════╣");
+				System.out.println("║     Eliminar categorias borra       ║");
+				System.out.println("║  los productos relacionados a esta  ║");
+				System.out.println("╠═════════════════════════════════════╣");
+				System.out.print("║    Eliminar categoria N°: ");
+				Integer category_id = Integer.parseInt(userInput.nextLine());
+				System.out.println("╚═════════════════════════════════════╝");
+				for (int i = 0; i < this.categories.size(); i++) {
+					if (this.categories.get(i).getId_category() == category_id) {
+						this.categories.remove(i);
+					}
+				}
+
+			} else {
+				System.out.println("╔═════════════════════════════════════╗");
+				System.out.println("║    Sin categorias por mostrar...    ║");
+				System.out.println("╚═════════════════════════════════════╝");
+				menuCategory();
+			}
+			menuCategory();
+
+		} catch (Exception e) {
+			System.out.println("╔═════════════════════════════════════╗");
+			System.out.println("║    Parece que ha habido un error,   ║");
+			System.out.println("║          Intentelo nuevamente       ║");
+			System.out.println("╚═════════════════════════════════════╝");
+			menuCategory();
+		}
 	}
 
 	public void menuUser() {
@@ -297,7 +389,7 @@ public class Inventory_Management {
 			System.out.println("║ continuación:                       ║");
 			System.out.println("╠═════════════════════════════════════╣");
 			System.out.print("║ Escriba su respuesta:  ");
-			this.input = this.userInput.nextInt();
+			this.input = Integer.parseInt(userInput.nextLine());
 			System.out.println("╚═════════════════════════════════════╝");
 		} catch (Exception e) {
 			System.out.println("╔═════════════════════════════════════╗");
