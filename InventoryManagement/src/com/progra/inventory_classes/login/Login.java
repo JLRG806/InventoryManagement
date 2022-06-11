@@ -12,7 +12,13 @@ public class Login implements Auth {
 	private ArrayList<User> users = new ArrayList<User>();
 	private ArrayList<Category> categories = new ArrayList<Category>();
 	public Scanner input = new Scanner(System.in);
-
+	
+	
+	/**
+	 * Login constructor
+	 * @param users
+	 * @param categories
+	 */
 	public Login(ArrayList<User> users, ArrayList<Category> categories) {
 		this.users = users;
 		this.categories = categories;
@@ -23,11 +29,20 @@ public class Login implements Auth {
 		}
 	}
 	
+	/**
+	 * Constructor for Junit test
+	 * @param users
+	 * @param categories
+	 * @param test
+	 */
 	public Login(ArrayList<User> users, ArrayList<Category> categories, boolean test) {
 		this.users = users;
 		this.categories = categories;
 	}
 
+	/**
+	 * Return true if there is no users
+	 */
 	public boolean newUser() {
 		boolean result = false;
 		if (users.isEmpty()) {
@@ -38,6 +53,9 @@ public class Login implements Auth {
 		return result;
 	}
 
+	/**
+	 * Create de first user in case there is no users
+	 */
 	public void createFirstUser() {
 		User user;
 		System.out.println("╔═══════════════════════════════════╗");
@@ -63,6 +81,12 @@ public class Login implements Auth {
 
 	}
 
+
+	/**
+	 * Print the login menu
+	 *@param users
+	 *@param categories
+	 */
 	public void loginMenu(ArrayList<User> users, ArrayList<Category> categories) {
 		boolean successLogin = false;
 		do {
