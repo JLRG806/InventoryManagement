@@ -7,7 +7,7 @@ import com.progra.inventory_classes.category.Category;
 import com.progra.inventory_classes.inventory_manager.Inventory_Management;
 import com.progra.inventory_classes.user.User;
 
-public class Login {
+public class Login implements Auth {
 
 	private ArrayList<User> users = new ArrayList<User>();
 	private ArrayList<Category> categories = new ArrayList<Category>();
@@ -36,10 +36,6 @@ public class Login {
 
 		}
 		return result;
-	}
-
-	public void loadUser() {
-
 	}
 
 	public void createFirstUser() {
