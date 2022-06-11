@@ -22,6 +22,11 @@ public class Login {
 			loginMenu(this.users, this.categories);
 		}
 	}
+	
+	public Login(ArrayList<User> users, ArrayList<Category> categories, boolean test) {
+		this.users = users;
+		this.categories = categories;
+	}
 
 	public boolean newUser() {
 		boolean result = false;
