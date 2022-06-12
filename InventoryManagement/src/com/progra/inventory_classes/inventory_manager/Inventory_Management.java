@@ -232,6 +232,12 @@ public class Inventory_Management {
 							.add(new Product(this.productCounter, product_name, price, stock));
 
 					this.productCounter++;
+					
+					System.out.println("╔═════════════════════════════════════╗");
+					System.out.println("║           Producto creado  "
+							+ "         ║");
+					System.out.println("╚═════════════════════════════════════╝");
+					userInput.nextLine();
 				}
 			}
 			menuProducts();
@@ -298,6 +304,10 @@ public class Inventory_Management {
 								this.categories.get(i).getProducts().get(j).setProduct_name(product_name);
 								this.categories.get(i).getProducts().get(j).setPrice(price);
 
+								System.out.println("╔═════════════════════════════════════╗");
+								System.out.println("║        Producto actualizado         ║");
+								System.out.println("╚═════════════════════════════════════╝");
+								userInput.nextLine();
 							}
 						}
 					}
@@ -717,6 +727,11 @@ public class Inventory_Management {
 	 * Deslogea al usuario
 	 */
 	public void logOut() {
+		System.out.println("╔═════════════════════════════════════╗");
+		System.out.println("║    Cerrando sesión  ...             ║");
+		System.out.println("╚═════════════════════════════════════╝");
+		userInput.nextLine();
+		clearConsole();
 		Login l = new Login(this.users, this.categories);
 	}
 
