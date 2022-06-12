@@ -234,7 +234,8 @@ public class Inventory_Management {
 					this.productCounter++;
 					
 					System.out.println("╔═════════════════════════════════════╗");
-					System.out.println("║           Producto creado           ║");
+					System.out.println("║           Producto creado  "
+							+ "         ║");
 					System.out.println("╚═════════════════════════════════════╝");
 					userInput.nextLine();
 				}
@@ -726,6 +727,11 @@ public class Inventory_Management {
 	 * Deslogea al usuario
 	 */
 	public void logOut() {
+		System.out.println("╔═════════════════════════════════════╗");
+		System.out.println("║    Cerrando sesión  ...             ║");
+		System.out.println("╚═════════════════════════════════════╝");
+		userInput.nextLine();
+		clearConsole();
 		Login l = new Login(this.users, this.categories);
 	}
 
