@@ -8,23 +8,23 @@ public class Category {
 
 	private Integer id_category;
 	private String category_name;
-	private ArrayList<Integer> id_products;
-	private Integer counter = 0;
+	private ArrayList<Product> products = new ArrayList<Product>();	
 
 	/**
 	 * Constructor
 	 * 
 	 * @param category_name
+	 * @param arrayList 
 	 */
 	public Category(Integer id_category, String category_name) {
 		this.id_category = id_category;
-		this.category_name = category_name;		
+		this.category_name = category_name;
 	}
 
-	public Category(Integer id_category, String category_name, ArrayList<Integer> products) {
+	public Category(Integer id_category, String category_name, ArrayList<Product> products) {
 		this.id_category = id_category;
 		this.category_name = category_name;
-		this.id_products = products;		
+		this.products = products;
 	}
 
 	/**
@@ -53,6 +53,14 @@ public class Category {
 	 */
 	public void setCategory_name(String category_name) {
 		this.category_name = category_name;
+	}
+
+	public ArrayList<Product> getProducts() {
+		return products;
+	}
+
+	public void setProducts(ArrayList<Product> id_products) {
+		this.products = id_products;
 	}
 
 }
