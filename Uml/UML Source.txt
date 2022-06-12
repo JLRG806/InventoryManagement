@@ -1,0 +1,149 @@
+@startuml
+
+class User {
+  - Integer id_user
+  - String username
+  - int user_type
+  - String password
+
+  + User()
+  + Integer getId_user ()
+  + setId_user (Integer id_user)
+  + String getUsername ()
+  + setUsername (String username)
+  + int getUserType ()
+  + setUser_type (int user_type)
+  + String getPassword ()
+  + setPassword (String password)
+}
+
+abstract People {
+  + {abstract} Integer getId_user()
+  + {abstract} void setId_user(Integer id_user)
+  + {abstract} String getUsername()
+  + {abstract} void setUsername(String username)
+  + {abstract} int getUser_type()
+  + {abstract} void setUser_type(int user_type)
+  + {abstract} String getPassword()
+  + {abstract} void setPassword(String password)
+}
+
+class Category {
+  - Integer id_category
+  - String category_name
+  - ArrayList<Product> products
+
+  + Category (Integer id_category, String category_name)
+  + Category(Integer id_category, String category_name, ArrayList<Product> products)
+  + Integer getId_Category()
+  + setId_Category(Integer value)
+  + String getName_Category()
+  + setName_Category(String value)
+}
+
+class Login {
+  - ArrayList<User> users
+  - ArrayList<Category> categories
+  + public Scanner input
+
+  + Login (ArrayList<User> users, ArrayList<Category> categories)
+  + newUser ()
+  + createFirstUser()
+  + loginMenu(ArrayList<User> users, ArrayList<Category> categories)
+}
+
+interface Auth {
+  + boolean newUser()
+  + void createFirstUser()
+  + void loginMenu()
+}
+
+
+class Product {
+  - Integer id_product
+  - String product_name
+  - double price
+  - int stock_quantity 
+
+  + Product(String product_name, double price, int stock_quantity)  
+  + String getId_product()
+  + setId_product(int value)
+  + String getProduct_name()
+  + setProduct_name(String value)
+  + double getPrice()
+  + setPrice(double value)
+  + int getStock_Quantity()
+  + setStock_Quantity(int value)
+}
+
+abstract Assets {
+  + {abstract} Integer getId_product();
+  + {abstract} void setId_product(Integer id_product);
+  + {abstract} String getProduct_name();
+  + {abstract} void setProduct_name(String product_name);
+  + {abstract} double getPrice();
+  + {abstract} void setPrice(double price);
+  + {abstract} int getStock_quantity();
+  + {abstract} void setStock_quantity(int stock_quantity);
+}
+
+interface Management {
+  +Poner cosas aquí ()
+}
+
+class Inventory_Management {
+  - {static} ArrayList<User> users
+  - ArrayList<Category> categories
+  - ArrayList<Product> products
+  - Integer categoryCounter
+  - Integer productCounter
+  + Scanner userInput
+	- Integer input
+  - Integer displayMenu
+
+  + Inventory_Management(ArrayList<User> users, ArrayList<Category> categories, Integer displayMenu)
+  + menuType ()
+  + menuAdmin ()
+  + menuProducts ()
+  + createProduct()
+  + updateProduct()
+  + restock()
+  + deleteProduct()
+  + menuCategory ()
+  + createCategory()
+  + updateCategory()
+  + deleteCategory()
+  + logOut ()
+  + clearConsole ()
+}
+
+'Agregation:'
+Inventory_Management "1" *- "many" User: contains
+Inventory_Management "1" o- "many" Category: contains
+Inventory_Management "1" o- "many" Product: contains
+
+Login "1" *- "many" User: contains
+Login "1" o- "many" Category: contains
+
+Category "1" o- "many" Product: contains
+
+
+'Asosiation'
+Login <-- Inventory_Management
+
+'Extension'
+Auth <|.. Login
+
+People <|.. User
+
+Assets <|.. Product
+
+Management <|.. Inventory_Management
+
+' extension <|-
+' composition *-
+' aggregation o-
+   
+
+@enduml
+
